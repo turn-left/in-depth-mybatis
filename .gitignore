@@ -8,9 +8,12 @@
 /.settings
 /nb*
 /release.properties
-/target
 
 # These are needed if running in IDE without properties set
 /ibderby
 derby.log
 /bin/
+*.class
+target
+*.dat
+derbyDB/

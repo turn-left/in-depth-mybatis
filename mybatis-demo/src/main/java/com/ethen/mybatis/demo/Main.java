@@ -1,5 +1,6 @@
 package com.ethen.mybatis.demo;
 
+import com.ethen.mybatis.demo.mapper.BlogMapper;
 import com.ethen.mybatis.demo.model.Blog;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -21,7 +22,9 @@ public class Main {
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        Blog blog = sqlSession.selectOne("com.ethen.mybatis.demo.mapper.BlogMapper.selectBlog", 101);
+//        Blog blog = sqlSession.selectOne("com.ethen.mybatis.demo.mapper.BlogMapper.selectBlog", 101);
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        Blog blog = mapper.selectBlog(101);
         System.err.println(blog);
     }
 }
